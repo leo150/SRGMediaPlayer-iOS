@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		5CB1A10CE53E2A8720302D99 /* libPods-RTSMediaPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A05D6955446198632FA7E824 /* libPods-RTSMediaPlayer.a */; };
+		9F064C521B175C0F0044E2C7 /* RTSMediaSegmentsController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F43A6DF1B1610D0007832B7 /* RTSMediaSegmentsController.h */; };
+		9F43A6E11B1610D0007832B7 /* RTSMediaSegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F43A6E01B1610D0007832B7 /* RTSMediaSegmentsController.m */; };
+		9F73412C1B18678F0036D391 /* libPods-RTSMediaPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A05D6955446198632FA7E824 /* libPods-RTSMediaPlayer.a */; };
+		9F73413D1B1869CC0036D391 /* RTSMultiPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F7340E81B18572B0036D391 /* RTSMultiPlayer.storyboard */; };
+		9F7341421B186A130036D391 /* RTSMultiPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340D71B18572B0036D391 /* RTSMultiPlayer.h */; };
+		9F7341431B186A130036D391 /* NSBundle+RTSMultiPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340D91B18572B0036D391 /* NSBundle+RTSMultiPlayer.h */; };
+		9F7341441B186A130036D391 /* RTSMultiPlayerController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340DC1B18572B0036D391 /* RTSMultiPlayerController.h */; };
+		9F7341451B186A130036D391 /* RTSMultiPlayerControllerDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340DE1B18572B0036D391 /* RTSMultiPlayerControllerDataSource.h */; };
+		9F7341461B186A130036D391 /* RTSMultiPlayerThumbnailCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340DF1B18572B0036D391 /* RTSMultiPlayerThumbnailCell.h */; };
+		9F7341471B186A130036D391 /* RTSMultiPlayerViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340E11B18572B0036D391 /* RTSMultiPlayerViewController.h */; };
+		9F7341481B186A130036D391 /* RTSMultiPlayerViewDataSource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340E31B18572B0036D391 /* RTSMultiPlayerViewDataSource.h */; };
+		9F7341491B186A130036D391 /* RTSMultiPlayerViewDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340E41B18572B0036D391 /* RTSMultiPlayerViewDelegate.h */; };
+		9F73414A1B186A130036D391 /* UIViewController+RTSMultiPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9F7340E51B18572B0036D391 /* UIViewController+RTSMultiPlayer.h */; };
+		9F73414B1B186A290036D391 /* NSBundle+RTSMultiPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7340DA1B18572B0036D391 /* NSBundle+RTSMultiPlayer.m */; };
+		9F73414C1B186A290036D391 /* RTSMultiPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7340DD1B18572B0036D391 /* RTSMultiPlayerController.m */; };
+		9F73414D1B186A290036D391 /* RTSMultiPlayerThumbnailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7340E01B18572B0036D391 /* RTSMultiPlayerThumbnailCell.m */; };
+		9F73414E1B186A290036D391 /* RTSMultiPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7340E21B18572B0036D391 /* RTSMultiPlayerViewController.m */; };
+		9F73414F1B186A290036D391 /* UIViewController+RTSMultiPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F7340E61B18572B0036D391 /* UIViewController+RTSMultiPlayer.m */; };
 		B60440FB1AA20E8D00C7DA57 /* RTSMediaPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B60440FA1AA20E8D00C7DA57 /* RTSMediaPlayerView.m */; };
 		B60440FC1AA210C900C7DA57 /* RTSMediaPlayerView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B60440F91AA20E8D00C7DA57 /* RTSMediaPlayerView.h */; };
 		B61E18C11AA750CC00E4FAB9 /* RTSMediaPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B61E18BF1AA750CC00E4FAB9 /* RTSMediaPlayerViewController.m */; };
@@ -53,6 +71,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9F7341401B1869F70036D391 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C201D8ED1A9DC1A40016C629 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9F7341331B1869B20036D391;
+			remoteInfo = "RTSMultiPlayer Resources";
+		};
 		C2AB24EC1ABC191400EB51B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C201D8ED1A9DC1A40016C629 /* Project object */;
@@ -63,6 +88,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		9F7341031B18678F0036D391 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				9F7341421B186A130036D391 /* RTSMultiPlayer.h in CopyFiles */,
+				9F7341431B186A130036D391 /* NSBundle+RTSMultiPlayer.h in CopyFiles */,
+				9F7341441B186A130036D391 /* RTSMultiPlayerController.h in CopyFiles */,
+				9F7341451B186A130036D391 /* RTSMultiPlayerControllerDataSource.h in CopyFiles */,
+				9F7341461B186A130036D391 /* RTSMultiPlayerThumbnailCell.h in CopyFiles */,
+				9F7341471B186A130036D391 /* RTSMultiPlayerViewController.h in CopyFiles */,
+				9F7341481B186A130036D391 /* RTSMultiPlayerViewDataSource.h in CopyFiles */,
+				9F7341491B186A130036D391 /* RTSMultiPlayerViewDelegate.h in CopyFiles */,
+				9F73414A1B186A130036D391 /* UIViewController+RTSMultiPlayer.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C201D8F31A9DC1A40016C629 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,6 +135,26 @@
 		42CBA752E07E72B0CBDF3ADE /* Pods-RTSMediaPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTSMediaPlayerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RTSMediaPlayerTests/Pods-RTSMediaPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B4F0FCA4CCEE501CDADCBC7 /* libPods-RTSMediaPlayer-RTSMediaPlayerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RTSMediaPlayer-RTSMediaPlayerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7314D9A587D56BA6E7F89FB2 /* libPods-RTSMediaPlayerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RTSMediaPlayerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F43A6DF1B1610D0007832B7 /* RTSMediaSegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMediaSegmentsController.h; sourceTree = "<group>"; };
+		9F43A6E01B1610D0007832B7 /* RTSMediaSegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSMediaSegmentsController.m; sourceTree = "<group>"; };
+		9F7340D71B18572B0036D391 /* RTSMultiPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMultiPlayer.h; sourceTree = "<group>"; };
+		9F7340D91B18572B0036D391 /* NSBundle+RTSMultiPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+RTSMultiPlayer.h"; sourceTree = "<group>"; };
+		9F7340DA1B18572B0036D391 /* NSBundle+RTSMultiPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+RTSMultiPlayer.m"; sourceTree = "<group>"; };
+		9F7340DC1B18572B0036D391 /* RTSMultiPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMultiPlayerController.h; sourceTree = "<group>"; };
+		9F7340DD1B18572B0036D391 /* RTSMultiPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSMultiPlayerController.m; sourceTree = "<group>"; };
+		9F7340DE1B18572B0036D391 /* RTSMultiPlayerControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMultiPlayerControllerDataSource.h; sourceTree = "<group>"; };
+		9F7340DF1B18572B0036D391 /* RTSMultiPlayerThumbnailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMultiPlayerThumbnailCell.h; sourceTree = "<group>"; };
+		9F7340E01B18572B0036D391 /* RTSMultiPlayerThumbnailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSMultiPlayerThumbnailCell.m; sourceTree = "<group>"; };
+		9F7340E11B18572B0036D391 /* RTSMultiPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMultiPlayerViewController.h; sourceTree = "<group>"; };
+		9F7340E21B18572B0036D391 /* RTSMultiPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSMultiPlayerViewController.m; sourceTree = "<group>"; };
+		9F7340E31B18572B0036D391 /* RTSMultiPlayerViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMultiPlayerViewDataSource.h; sourceTree = "<group>"; };
+		9F7340E41B18572B0036D391 /* RTSMultiPlayerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMultiPlayerViewDelegate.h; sourceTree = "<group>"; };
+		9F7340E51B18572B0036D391 /* UIViewController+RTSMultiPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RTSMultiPlayer.h"; sourceTree = "<group>"; };
+		9F7340E61B18572B0036D391 /* UIViewController+RTSMultiPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RTSMultiPlayer.m"; sourceTree = "<group>"; };
+		9F7340E81B18572B0036D391 /* RTSMultiPlayer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RTSMultiPlayer.storyboard; sourceTree = "<group>"; };
+		9F7341321B18678F0036D391 /* libRTSMultiPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRTSMultiPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F73413B1B1869B20036D391 /* RTSMultiPlayer Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RTSMultiPlayer Resources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F73413C1B1869B30036D391 /* RTSMultiPlayer Resources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RTSMultiPlayer Resources-Info.plist"; path = "/Users/onekiloparsec/RTS/rtsmediaplayer-ios/RTSMultiPlayer Resources-Info.plist"; sourceTree = "<absolute>"; };
 		A05D6955446198632FA7E824 /* libPods-RTSMediaPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RTSMediaPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE77ECC145A247C85E459918 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B60440F91AA20E8D00C7DA57 /* RTSMediaPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSMediaPlayerView.h; sourceTree = "<group>"; };
@@ -147,6 +210,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9F73412B1B18678F0036D391 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F73412C1B18678F0036D391 /* libPods-RTSMediaPlayer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C201D8F21A9DC1A40016C629 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,6 +246,54 @@
 				7314D9A587D56BA6E7F89FB2 /* libPods-RTSMediaPlayerTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F43A6DE1B16109F007832B7 /* Segments */ = {
+			isa = PBXGroup;
+			children = (
+				9F43A6DF1B1610D0007832B7 /* RTSMediaSegmentsController.h */,
+				9F43A6E01B1610D0007832B7 /* RTSMediaSegmentsController.m */,
+			);
+			name = Segments;
+			sourceTree = "<group>";
+		};
+		9F7340D31B18572B0036D391 /* RTSMultiChannelPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				9F7340D71B18572B0036D391 /* RTSMultiPlayer.h */,
+				9F7340D81B18572B0036D391 /* Sources */,
+				9F7340E71B18572B0036D391 /* Storyboard */,
+			);
+			path = RTSMultiChannelPlayer;
+			sourceTree = "<group>";
+		};
+		9F7340D81B18572B0036D391 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9F7340D91B18572B0036D391 /* NSBundle+RTSMultiPlayer.h */,
+				9F7340DA1B18572B0036D391 /* NSBundle+RTSMultiPlayer.m */,
+				9F7340DC1B18572B0036D391 /* RTSMultiPlayerController.h */,
+				9F7340DD1B18572B0036D391 /* RTSMultiPlayerController.m */,
+				9F7340DE1B18572B0036D391 /* RTSMultiPlayerControllerDataSource.h */,
+				9F7340DF1B18572B0036D391 /* RTSMultiPlayerThumbnailCell.h */,
+				9F7340E01B18572B0036D391 /* RTSMultiPlayerThumbnailCell.m */,
+				9F7340E11B18572B0036D391 /* RTSMultiPlayerViewController.h */,
+				9F7340E21B18572B0036D391 /* RTSMultiPlayerViewController.m */,
+				9F7340E31B18572B0036D391 /* RTSMultiPlayerViewDataSource.h */,
+				9F7340E41B18572B0036D391 /* RTSMultiPlayerViewDelegate.h */,
+				9F7340E51B18572B0036D391 /* UIViewController+RTSMultiPlayer.h */,
+				9F7340E61B18572B0036D391 /* UIViewController+RTSMultiPlayer.m */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		9F7340E71B18572B0036D391 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9F73413C1B1869B30036D391 /* RTSMultiPlayer Resources-Info.plist */,
+				9F7340E81B18572B0036D391 /* RTSMultiPlayer.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		B61E18F01AA87D2E00E4FAB9 /* Core */ = {
@@ -239,6 +358,7 @@
 			children = (
 				B64503111ADFA286001021A8 /* RTSMediaPlayer.podspec */,
 				C201D8F71A9DC1A40016C629 /* RTSMediaPlayer */,
+				9F7340D31B18572B0036D391 /* RTSMultiChannelPlayer */,
 				C201D9041A9DC1A40016C629 /* RTSMediaPlayerTests */,
 				C201D8F61A9DC1A40016C629 /* Products */,
 				F6E7F12E1877CFD34FD0CFC5 /* Pods */,
@@ -255,6 +375,8 @@
 				C201D8F51A9DC1A40016C629 /* libRTSMediaPlayer.a */,
 				C201D9001A9DC1A40016C629 /* RTSMediaPlayerTests.xctest */,
 				C2AB24E41ABC184A00EB51B8 /* RTSMediaPlayer.bundle */,
+				9F7341321B18678F0036D391 /* libRTSMultiPlayer.a */,
+				9F73413B1B1869B20036D391 /* RTSMultiPlayer Resources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,6 +427,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9F7340FF1B18678F0036D391 /* RTSMultiPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F73412F1B18678F0036D391 /* Build configuration list for PBXNativeTarget "RTSMultiPlayer" */;
+			buildPhases = (
+				9F7341021B18678F0036D391 /* Check Pods Manifest.lock */,
+				9F7341031B18678F0036D391 /* CopyFiles */,
+				9F7341151B18678F0036D391 /* Sources */,
+				9F73412B1B18678F0036D391 /* Frameworks */,
+				9F73412D1B18678F0036D391 /* Generate documentation */,
+				9F73412E1B18678F0036D391 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9F7341411B1869F70036D391 /* PBXTargetDependency */,
+			);
+			name = RTSMultiPlayer;
+			productName = RTSMediaPlayer;
+			productReference = 9F7341321B18678F0036D391 /* libRTSMultiPlayer.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9F7341331B1869B20036D391 /* RTSMultiPlayer Resources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F7341381B1869B20036D391 /* Build configuration list for PBXNativeTarget "RTSMultiPlayer Resources" */;
+			buildPhases = (
+				9F7341341B1869B20036D391 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RTSMultiPlayer Resources";
+			productName = "RTSMediaPlayer Resources";
+			productReference = 9F73413B1B1869B20036D391 /* RTSMultiPlayer Resources.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		C201D8F41A9DC1A40016C629 /* RTSMediaPlayer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C201D9091A9DC1A40016C629 /* Build configuration list for PBXNativeTarget "RTSMediaPlayer" */;
@@ -395,11 +553,21 @@
 				C201D8F41A9DC1A40016C629 /* RTSMediaPlayer */,
 				C2AB24E31ABC184A00EB51B8 /* RTSMediaPlayer Resources */,
 				C201D8FF1A9DC1A40016C629 /* RTSMediaPlayerTests */,
+				9F7340FF1B18678F0036D391 /* RTSMultiPlayer */,
+				9F7341331B1869B20036D391 /* RTSMultiPlayer Resources */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9F7341341B1869B20036D391 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F73413D1B1869CC0036D391 /* RTSMultiPlayer.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C201D8FE1A9DC1A40016C629 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -450,6 +618,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RTSMediaPlayerTests/Pods-RTSMediaPlayerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9F7341021B18678F0036D391 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9F73412D1B18678F0036D391 /* Generate documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate documentation";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APPLEDOC_PATH=`which appledoc`\nif [ $APPLEDOC_PATH ]; then\n\n$APPLEDOC_PATH \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"RTS\" \\\n--company-id \"ch.rts\" \\\n--ignore \".m\" \\\n--ignore \"Pods\" \\\n--ignore \"RTSMediaPlayerDemo\" \\\n--explicit-crossref \\\n--keep-intermediate-files \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--no-repeat-first-par \\\n--no-warn-missing-arg \\\n--no-warn-undocumented-object \\\n--no-warn-undocumented-member \\\n--no-warn-empty-description \\\n--no-warn-invalid-crossref \\\n--docset-bundle-id ${PROJECT_NAME} \\\n--docset-bundle-name ${PROJECT_NAME} \\\n--docset-install-path \"docs\" \\\n--docset-platform-family \"iphoneos\" \\\n--output \"docs\"  \\\n--exit-threshold 2 \\\n${PROJECT_DIR}\n\nfi";
+			showEnvVarsInLog = 0;
+		};
+		9F73412E1B18678F0036D391 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RTSMediaPlayer/Pods-RTSMediaPlayer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A7A9626A6A9FDECFF0E0CFB9 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -498,6 +711,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9F7341151B18678F0036D391 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F73414B1B186A290036D391 /* NSBundle+RTSMultiPlayer.m in Sources */,
+				9F73414C1B186A290036D391 /* RTSMultiPlayerController.m in Sources */,
+				9F73414D1B186A290036D391 /* RTSMultiPlayerThumbnailCell.m in Sources */,
+				9F73414E1B186A290036D391 /* RTSMultiPlayerViewController.m in Sources */,
+				9F73414F1B186A290036D391 /* UIViewController+RTSMultiPlayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C201D8F11A9DC1A40016C629 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -539,6 +764,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9F7341411B1869F70036D391 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9F7341331B1869B20036D391 /* RTSMultiPlayer Resources */;
+			targetProxy = 9F7341401B1869F70036D391 /* PBXContainerItemProxy */;
+		};
 		C2AB24ED1ABC191400EB51B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C2AB24E31ABC184A00EB51B8 /* RTSMediaPlayer Resources */;
@@ -547,6 +777,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		9F7341301B18678F0036D391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE8AC0D05396A800E04F3378 /* Pods-RTSMediaPlayer.debug.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = RTSMultiPlayer;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9F7341311B18678F0036D391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6C00AC65FCA63E9D4B82E1F /* Pods-RTSMediaPlayer.release.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = RTSMultiPlayer;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9F7341391B1869B20036D391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "RTSMultiPlayer Resources-Info.plist";
+				PRODUCT_NAME = "RTSMultiPlayer Resources";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		9F73413A1B1869B20036D391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "RTSMultiPlayer Resources-Info.plist";
+				PRODUCT_NAME = "RTSMultiPlayer Resources";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		C201D9071A9DC1A40016C629 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -676,6 +942,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9F73412F1B18678F0036D391 /* Build configuration list for PBXNativeTarget "RTSMultiPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F7341301B18678F0036D391 /* Debug */,
+				9F7341311B18678F0036D391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F7341381B1869B20036D391 /* Build configuration list for PBXNativeTarget "RTSMultiPlayer Resources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F7341391B1869B20036D391 /* Debug */,
+				9F73413A1B1869B20036D391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C201D8F01A9DC1A40016C629 /* Build configuration list for PBXProject "RTSMediaPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
