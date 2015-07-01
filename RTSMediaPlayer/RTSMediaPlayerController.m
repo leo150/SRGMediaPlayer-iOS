@@ -226,13 +226,17 @@ static NSDictionary * ErrorUserInfo(NSError *error, NSString *failureReason)
         }
 		
 		[self.dataSource mediaPlayerController:self contentURLForIdentifier:self.identifier completionHandler:^(NSURL *contentURL, NSError *error) {
-			if (contentURL)
-			{
-				BOOL autoPlay = [transition.userInfo[RTSMediaPlayerStateMachineAutoPlayInfoKey] boolValue];
-				[self fireEvent:self.loadSuccessEvent userInfo: @{ RTSMediaPlayerStateMachineContentURLInfoKey : contentURL, RTSMediaPlayerStateMachineAutoPlayInfoKey : @(autoPlay)}];
+			if (contentURL) {
+				NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+				userInfo[RTSMediaPlayerStateMachineContentURLInfoKey] = contentURL;
+
+				NSValue *autoPlayTimeValue = transition.userInfo[RTSMediaPlayerStateMachineAutoPlayInfoKey];
+				if (autoPlayTimeValue) {
+					userInfo[RTSMediaPlayerStateMachineAutoPlayInfoKey] = autoPlayTimeValue;
+				}
+				[self fireEvent:self.loadSuccessEvent userInfo:userInfo];
 			}
-			else
-			{
+			else {
 				[self fireEvent:self.resetEvent userInfo:ErrorUserInfo(error, @"The RTSMediaPlayerControllerDataSource implementation returned a nil contentURL and a nil error.")];
 			}
 		}];
@@ -252,9 +256,12 @@ static NSDictionary * ErrorUserInfo(NSError *error, NSString *failureReason)
 	[ready setDidEnterStateBlock:^(TKState *state, TKTransition *transition) {
 		@strongify(self)
 		
-		BOOL autoPlay = [transition.userInfo[RTSMediaPlayerStateMachineAutoPlayInfoKey] boolValue];
-		if (autoPlay) {
-			[self.player play];
+		NSValue *autoPlayTimeValue = transition.userInfo[RTSMediaPlayerStateMachineAutoPlayInfoKey];
+		if (autoPlayTimeValue) {
+			CMTime autoPlayTime = [autoPlayTimeValue CMTimeValue];
+			[self.player seekToTime:autoPlayTime completionHandler:^(BOOL finished) {
+				[self.player play];
+			}];
 		}
 		else if (self.player.rate == 0) {
 			[self fireEvent:self.pauseEvent userInfo:nil];
@@ -332,22 +339,22 @@ static NSDictionary * ErrorUserInfo(NSError *error, NSString *failureReason)
 
 #pragma mark - Playback
 
-- (void) loadPlayerShouldPlayImediately:(BOOL)autoPlay
+- (void)loadPlayerAndTryAutoPlayAtTime:(NSValue *)cmTimeValue
 {
 	if ([self.stateMachine.currentState isEqual:self.idleState]) {
-		[self fireEvent:self.loadEvent userInfo: @{ RTSMediaPlayerStateMachineAutoPlayInfoKey : @(autoPlay) }];
+		[self fireEvent:self.loadEvent userInfo: @{ RTSMediaPlayerStateMachineAutoPlayInfoKey : cmTimeValue }];
 	}
 }
 
-- (void) prepareToPlay
+- (void)prepareToPlay
 {
-	[self loadPlayerShouldPlayImediately:NO];
+	[self loadPlayerAndTryAutoPlayAtTime:nil];
 }
 
-- (void) play
+- (void)play
 {
 	if ([self.stateMachine.currentState isEqual:self.idleState]) {
-		[self loadPlayerShouldPlayImediately:YES];
+		[self loadPlayerAndTryAutoPlayAtTime:[NSValue valueWithCMTime:kCMTimeZero]];
 	}
 	else {
 		[self.player play];
@@ -364,7 +371,7 @@ static NSDictionary * ErrorUserInfo(NSError *error, NSString *failureReason)
 	[self play];
 }
 
-- (void) pause
+- (void)pause
 {
 	[self fireEvent:self.pauseEvent userInfo:nil];
 	[self.player pause];
@@ -409,6 +416,18 @@ static NSDictionary * ErrorUserInfo(NSError *error, NSString *failureReason)
 			[self play];
 		}
    }];
+}
+
+- (void)playIdentifier:(NSString *)identifier atTime:(CMTime)time
+{
+	if ([self.identifier isEqualToString:identifier]) {
+		[self playAtTime:time];
+	}
+	else {
+		[self reset];
+		self.identifier = identifier;
+		[self loadPlayerAndTryAutoPlayAtTime:[NSValue valueWithCMTime:time]];
+	}
 }
 
 - (AVPlayerItem *)playerItem
