@@ -28,16 +28,18 @@ static SRGMediaPlayerSharedController *s_mediaPlayerController = nil;
 @property (nonatomic, weak) IBOutlet SRGPictureInPictureButton *pictureInPictureButton;
 @property (nonatomic, weak) IBOutlet SRGPlaybackActivityIndicatorView *playbackActivityIndicatorView;
 
-@property (weak) IBOutlet SRGPlaybackButton *playPauseButton;
-@property (weak) IBOutlet SRGTimeSlider *timeSlider;
-@property (weak) IBOutlet SRGVolumeView *volumeView;
-@property (weak) IBOutlet UIButton *liveButton;
+@property (nonatomic, weak) IBOutlet SRGPlaybackButton *playPauseButton;
+@property (nonatomic, weak) IBOutlet SRGTimelineView *timelineView;
+@property (nonatomic, weak) IBOutlet SRGTimeSlider *timeSlider;
+@property (nonatomic, weak) IBOutlet SRGVolumeView *volumeView;
+@property (nonatomic, weak) IBOutlet UIButton *liveButton;
 
-@property (weak) IBOutlet UIActivityIndicatorView *loadingActivityIndicatorView;
-@property (weak) IBOutlet UILabel *loadingLabel;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *loadingActivityIndicatorView;
+@property (nonatomic, weak) IBOutlet UILabel *loadingLabel;
 
-@property (weak) IBOutlet NSLayoutConstraint *valueLabelWidthConstraint;
-@property (weak) IBOutlet NSLayoutConstraint *timeLeftValueLabelWidthConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *valueLabelWidthConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *timeLeftValueLabelWidthConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *timelineViewHeightConstraint;
 
 @property (nonatomic) IBOutletCollection(UIView) NSArray *overlayViews;
 
@@ -127,6 +129,7 @@ static SRGMediaPlayerSharedController *s_mediaPlayerController = nil;
     
     self.pictureInPictureButton.mediaPlayerController = s_mediaPlayerController;
     self.playbackActivityIndicatorView.mediaPlayerController = s_mediaPlayerController;
+    self.timelineView.mediaPlayerController = s_mediaPlayerController;
     self.timeSlider.mediaPlayerController = s_mediaPlayerController;
     self.playPauseButton.mediaPlayerController = s_mediaPlayerController;
     
@@ -135,6 +138,9 @@ static SRGMediaPlayerSharedController *s_mediaPlayerController = nil;
     
     self.liveButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.liveButton.layer.borderWidth = 1.f;
+    
+    self.timelineView.delegate = self;
+    self.timelineViewHeightConstraint.constant = 0.f;
     
     // Hide the time slider while the stream type is unknown (i.e. the needed slider label size cannot be determined)
     [self setTimeSliderHidden:YES];
@@ -262,6 +268,14 @@ static SRGMediaPlayerSharedController *s_mediaPlayerController = nil;
     }
 }
 
+#pragma mark SRGTimelineViewDelegate protocol
+
+- (UICollectionViewCell *)timelineView:(SRGTimelineView *)timelineView cellForSegment:(id<SRGSegment>)segment
+{
+    NSAssert(NO, @"To support segments, you must subclass SRGMediaPlayerViewController and implement the SRGTimelineViewDelegate protocol");
+    return nil;
+}
+
 #pragma mark UIGestureRecognizerDelegate protocol
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -275,8 +289,23 @@ static SRGMediaPlayerSharedController *s_mediaPlayerController = nil;
 {
     SRGMediaPlayerController *mediaPlayerController = notification.object;
     
+    // Wait until a play or prepare to play method has been called (since segments are provided through these
+    // methods)
+    if (mediaPlayerController.playbackState == SRGMediaPlayerPlaybackStatePreparing) {
+        if (mediaPlayerController.visibleSegments.count != 0) {
+            self.timelineViewHeightConstraint.constant = 180.f;
+        }
+        else {
+            self.timelineViewHeightConstraint.constant = 0.f;
+        }
+        
+        // Force layout calculation before reloading the timeline (since UICollectionView based, won't load anything
+        // if its height is 0)
+        [self.view layoutIfNeeded];
+        [self.timelineView reloadData];
+    }
     // Dismiss any video overlay (full screen or picture in picture) when playback normally ends
-    if (mediaPlayerController.playbackState == SRGMediaPlayerPlaybackStateEnded) {
+    else if (mediaPlayerController.playbackState == SRGMediaPlayerPlaybackStateEnded) {
         if (s_mediaPlayerController.pictureInPictureController.isPictureInPictureActive) {
             [s_mediaPlayerController.pictureInPictureController stopPictureInPicture];
         }

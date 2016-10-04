@@ -5,6 +5,7 @@
 //
 
 #import "SRGMediaPlayerController.h"
+#import "SRGTimelineView.h"
 
 #import <UIKit/UIKit.h>
 
@@ -22,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  operations. After instantiating the view controller, you must therefore start playback by calling one of the `-play...`
  *  methods available.
  */
-@interface SRGMediaPlayerViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface SRGMediaPlayerViewController : UIViewController <SRGTimelineViewDelegate, UIGestureRecognizerDelegate>
 
 /**
  *  The underlying controller. Use for starting or pausing playback or listening to playback notifications, for example 

@@ -187,7 +187,8 @@
             case 1: {
                 SRGMediaPlayerViewController *mediaPlayerViewController = [[SRGMediaPlayerViewController alloc] init];
                 [self presentViewController:mediaPlayerViewController animated:YES completion:^{
-                    [mediaPlayerViewController.controller playURL:contentURL];
+                    NSArray<Segment *> *segments = [self segmentsForMediaAtIndex:self.selectedIndexPath.row];
+                    [mediaPlayerViewController.controller playURL:contentURL atTime:kCMTimeZero withSegments:segments userInfo:nil];
                 }];
                 break;
             }
