@@ -10,6 +10,7 @@
 
 #import "RTSMediaPlayerController.h"
 #import "RTSMediaPlayerControllerDataSource.h"
+#import "RTSMediaPlayerControllerDelegate.h"
 #import "RTSMediaSegmentsController.h"
 
 #import "RTSMediaPlayerError.h"
@@ -111,6 +112,7 @@ NSString * const RTSMediaPlayerPlaybackSeekingUponBlockingReasonInfoKey = @"Bloc
 @synthesize muted = _muted;
 @synthesize allowsExternalPlayback = _allowsExternalPlayback;
 @synthesize usesExternalPlaybackWhileExternalScreenIsActive = _usesExternalPlaybackWhileExternalScreenIsActive;
+@synthesize delegate = _delegate;
 
 #pragma mark - Initialization
 
@@ -1129,6 +1131,9 @@ static void LogProperties(id object)
 	}
 	
 	[self toggleAspect];
+	
+	if ([_delegate respondsToSelector:@selector(playerDidHandleDoubleTap:)])
+		[_delegate playerDidHandleDoubleTap:self];
 }
 
 - (void)toggleAspect
@@ -1164,6 +1169,9 @@ static void LogProperties(id object)
 - (void)handleSingleTap:(UITapGestureRecognizer *)gestureRecognizer
 {
 	[self toggleOverlays];
+	
+	if ([_delegate respondsToSelector:@selector(playerDidHandleSingleTap:)])
+		[_delegate playerDidHandleSingleTap:self];
 }
 
 - (void)setOverlaysVisible:(BOOL)visible
@@ -1175,6 +1183,9 @@ static void LogProperties(id object)
 		overlayView.hidden = !visible;
 	}
 	[self postNotificationName:visible ? RTSMediaPlayerDidShowControlOverlaysNotification : RTSMediaPlayerDidHideControlOverlaysNotification userInfo:nil];
+	
+	if ([_delegate respondsToSelector:@selector(playerController:didSetOverlaysVisible:)])
+		[_delegate playerController:self didSetOverlaysVisible:visible];
 }
 
 - (void)toggleOverlays

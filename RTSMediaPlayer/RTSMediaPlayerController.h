@@ -11,6 +11,7 @@
 #import "RTSMediaPlayerConstants.h"
 
 @protocol RTSMediaPlayerControllerDataSource;
+@protocol RTSMediaPlayerControllerDelegate;
 
 /**
  *  `RTSMediaPlayerController` is inspired by the `MPMoviePlayerController` class.
@@ -113,6 +114,11 @@
  *  The data source from which media information is retrieved
  */
 @property (weak) IBOutlet id<RTSMediaPlayerControllerDataSource> dataSource;
+
+/**
+ *  The delegate whose methods are called
+ */
+@property (nonatomic, weak) id<RTSMediaPlayerControllerDelegate> delegate;
 
 /**
  *  The identifier of the media currently attached to the player. You can use this identifier to identify the media through

@@ -7,6 +7,7 @@
 #import <SRGMediaPlayer/RTSMediaPlayerConstants.h>
 #import <SRGMediaPlayer/RTSMediaPlayerController.h>
 #import <SRGMediaPlayer/RTSMediaPlayerControllerDataSource.h>
+#import <SRGMediaPlayer/RTSMediaPlayerControllerDelegate.h>
 #import <SRGMediaPlayer/RTSMediaPlayerError.h>
 #import <SRGMediaPlayer/RTSMediaPlayerViewController.h>
 
