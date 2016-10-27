@@ -41,6 +41,7 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 @property (nonatomic, strong) UIColor *overriddenThumbTintColor;
 @property (nonatomic, strong) UIColor *overriddenMaximumTrackTintColor;
 @property (nonatomic, strong) UIColor *overriddenMinimumTrackTintColor;
+@property (nonatomic, strong) UIColor *overriddenProgressTrackTintColor;
 
 @end
 
@@ -133,6 +134,15 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 	self.overriddenMaximumTrackTintColor = maximumTrackTintColor;
 }
 
+- (UIColor *) progressTrackTintColor
+{
+	return self.overriddenProgressTrackTintColor ?: [UIColor blackColor];
+}
+
+- (void) setProgressTrackTintColor:(UIColor *)progressTrackTintColor
+{
+	self.overriddenProgressTrackTintColor = progressTrackTintColor;
+}
 
 #pragma mark - Time display
 
@@ -155,14 +165,14 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 	//  - We have a timeshift feed, which is characterized by an indefinite player item duration, and whose slider knob is
 	//    dragged close to now. We consider a timeshift 'close to now' when the slider is at the end, up to a tolerance
 	return self.mediaPlayerController.streamType == RTSMediaStreamTypeLive
-		|| (self.mediaPlayerController.streamType == RTSMediaStreamTypeDVR && (self.maximumValue - self.value < self.mediaPlayerController.liveTolerance));
+	|| (self.mediaPlayerController.streamType == RTSMediaStreamTypeDVR && (self.maximumValue - self.value < self.mediaPlayerController.liveTolerance));
 }
 
 - (void) updateTimeRangeLabels
 {
 	AVPlayerItem *playerItem = self.mediaPlayerController.playerItem;
 	if (! playerItem || self.mediaPlayerController.playbackState == RTSMediaPlaybackStateIdle || self.mediaPlayerController.playbackState == RTSMediaPlaybackStateEnded
-			|| playerItem.status != AVPlayerItemStatusReadyToPlay) {
+		|| playerItem.status != AVPlayerItemStatusReadyToPlay) {
 		self.valueLabel.text = @"--:--";
 		self.timeLeftValueLabel.text = @"--:--";
 		return;
@@ -209,7 +219,7 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 	
 	// Next, inform that we are sliding to other views.
 	[self.slidingDelegate timeSlider:self
-			 isMovingToPlaybackTime:time
+			  isMovingToPlaybackTime:time
 						   withValue:self.value
 						 interactive:YES];
 	
@@ -277,10 +287,10 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 {
 	CGRect trackFrame = [self trackRectForBounds:self.bounds];
 	
-	CGFloat lineWidth = 1.0f;
+	CGFloat lineWidth = 3.0f;
 	
 	CGContextSetLineWidth(context, lineWidth);
-	CGContextSetLineCap(context, kCGLineCapButt);
+	CGContextSetLineCap(context, kCGLineCapRound);
 	CGContextMoveToPoint(context, CGRectGetMinX(trackFrame)+2, SLIDER_VERTICAL_CENTER);
 	CGContextAddLineToPoint(context, CGRectGetMaxX(trackFrame)-2, SLIDER_VERTICAL_CENTER);
 	CGContextSetStrokeColorWithColor(context, self.maximumTrackTintColor.CGColor);
@@ -294,7 +304,7 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 
 - (void)drawTimeRangeProgress:(CMTimeRange)timeRange context:(CGContextRef)context
 {
-	CGFloat lineWidth = 1.0f;
+	CGFloat lineWidth = 3.0f;
 	
 	CGFloat duration = CMTimeGetSeconds(self.mediaPlayerController.playerItem.duration);
 	if (isnan(duration))
@@ -302,14 +312,21 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 	
 	CGRect trackFrame = [self trackRectForBounds:self.bounds];
 	
+	CGFloat rangeEnd = (CMTimeGetSeconds(timeRange.start)+CMTimeGetSeconds(timeRange.duration));
+	
 	CGFloat minX = CGRectGetWidth(trackFrame) / duration * CMTimeGetSeconds(timeRange.start);
-	CGFloat maxX = CGRectGetWidth(trackFrame) / duration * (CMTimeGetSeconds(timeRange.start)+CMTimeGetSeconds(timeRange.duration));
+	CGFloat maxX = CGRectGetWidth(trackFrame) / duration * rangeEnd;
 	
 	CGContextSetLineWidth(context, lineWidth);
-	CGContextSetLineCap(context,kCGLineCapButt);
+	if (fabs((duration) - (rangeEnd)) < 0.01f) {
+		CGContextSetLineCap(context,kCGLineCapRound);
+	}
+	else {
+		CGContextSetLineCap(context,kCGLineCapButt);
+	}
 	CGContextMoveToPoint(context, minX, SLIDER_VERTICAL_CENTER);
 	CGContextAddLineToPoint(context, maxX, SLIDER_VERTICAL_CENTER);
-	CGContextSetStrokeColorWithColor(context, self.borderColor.CGColor);
+	CGContextSetStrokeColorWithColor(context, self.progressTrackTintColor.CGColor);
 	CGContextStrokePath(context);
 }
 
@@ -353,7 +370,7 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 
 - (float)resetValue
 {
-    return (self.knobLivePosition == RTSTimeSliderLiveKnobPositionLeft) ? 0. : 1.;
+	return (self.knobLivePosition == RTSTimeSliderLiveKnobPositionLeft) ? 0. : 1.;
 }
 
 - (void)willMoveToWindow:(UIWindow *)window
@@ -368,13 +385,13 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 			if (!self.isTracking && self.mediaPlayerController.playbackState != RTSMediaPlaybackStateSeeking)
 			{
 				CMTimeRange timeRange = [self.mediaPlayerController timeRange];
-                if (self.mediaPlayerController.streamType == RTSMediaStreamTypeOnDemand
-                        && (self.mediaPlayerController.playbackState == RTSMediaPlaybackStateIdle || self.mediaPlayerController.playbackState == RTSMediaPlaybackStateEnded)) {
-                    self.maximumValue = 0.f;
-                    self.value = 0.f;
-                    self.userInteractionEnabled = YES;
-                }
-                else if(!CMTIMERANGE_IS_EMPTY(timeRange) && !CMTIMERANGE_IS_INDEFINITE(timeRange) && !CMTIMERANGE_IS_INVALID(timeRange))
+				if (self.mediaPlayerController.streamType == RTSMediaStreamTypeOnDemand
+					&& (self.mediaPlayerController.playbackState == RTSMediaPlaybackStateIdle || self.mediaPlayerController.playbackState == RTSMediaPlaybackStateEnded)) {
+					self.maximumValue = 0.f;
+					self.value = 0.f;
+					self.userInteractionEnabled = YES;
+				}
+				else if(!CMTIMERANGE_IS_EMPTY(timeRange) && !CMTIMERANGE_IS_INDEFINITE(timeRange) && !CMTIMERANGE_IS_INVALID(timeRange))
 				{
 					self.maximumValue = CMTimeGetSeconds(timeRange.duration);
 					
@@ -384,8 +401,8 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 				}
 				else
 				{
-                    float value = [self resetValue];
-                    self.maximumValue = value;
+					float value = [self resetValue];
+					self.maximumValue = value;
 					self.value = value;
 					self.userInteractionEnabled = NO;
 				}
@@ -423,10 +440,10 @@ static NSString *RTSTimeSliderFormatter(NSTimeInterval seconds)
 - (void)timesliderPlaybackStateDidChange:(NSNotification *)notification
 {
 	if (self.mediaPlayerController.playbackState == RTSMediaPlaybackStateIdle
-			|| self.mediaPlayerController.playbackState == RTSMediaPlaybackStateEnded) {
-        float value = [self resetValue];
+		|| self.mediaPlayerController.playbackState == RTSMediaPlaybackStateEnded) {
+		float value = [self resetValue];
 		self.value = value;
-        self.maximumValue = value;
+		self.maximumValue = value;
 		
 		[self.slidingDelegate timeSlider:self
 				  isMovingToPlaybackTime:self.time

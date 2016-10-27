@@ -93,6 +93,16 @@ typedef NS_ENUM(NSInteger, RTSTimeSliderLiveKnobPosition) {
  */
 @property (nonatomic, assign) RTSTimeSliderLiveKnobPosition knobLivePosition;
 
+/**
+ *  Progress track color (defaults to black)
+ */
+@property (nonatomic, strong) IBInspectable UIColor *progressTrackTintColor;
+
+/**
+ *  Update time labels depend on current value
+ */
+- (void)updateTimeRangeLabels;
+
 @end
 
 /**
